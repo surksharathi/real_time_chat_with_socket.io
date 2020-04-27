@@ -1,0 +1,27 @@
+{
+  "name": "chatapplication",
+  "version": "1.0.0",
+  "description": "chat application using mongodb,express, node and socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surksharathi/real_time_chat_with_socket.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/surksharathi/real_time_chat_with_socket.io/issues"
+  },
+  "homepage": "https://github.com/surksharathi/real_time_chat_with_socket.io#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dependable": "^1.1.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-promise-router": "^3.0.3",
+    "lodash": "^4.17.15"
+  }
+}

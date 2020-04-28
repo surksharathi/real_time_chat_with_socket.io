@@ -1,1 +1,11 @@
 Chat Application
+
+1) Start MongoDb server 
+sudo systemctl start mongod
+
+2)Verify that MongoDB has started successfully.
+sudo systemctl status mongod
+
+3) Stop MongoDB
+sudo systemctl stop mongod
+

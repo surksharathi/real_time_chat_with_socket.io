@@ -7,8 +7,10 @@ module.exports= function(_,passport,User){
            router.get('/',this.indexPage);
            router.get('/signup',this.getSignUp);
            router.post('/signup',User.SignUpValidation,this.postSignup);
-           router.get('/home',this.homePage);
+          
            router.post('/',User.loginValidation,this.postLogin);
+           router.get('/auth/facebook', this.getFacebookLogin);
+		   router.get('/auth/facebook/callback', this.facebookLogin);
        },
        indexPage:function(req,res){
         const errors = req.flash('error');
@@ -29,9 +31,14 @@ module.exports= function(_,passport,User){
            failureRedirect:'/signup',
            failureFlash:true,
        }),
-       homePage: function(req,res){
-           return res.render('home');
-       },
+       getFacebookLogin: passport.authenticate('facebook', {
+        scope: 'email',
+        }),
+        facebookLogin: passport.authenticate('facebook', {
+            successRedirect: '/home',
+            failureRedirect: '/signup',
+            failureFlash: true,
+        }),
        login:function(req,res){
           return  res.json({
             status: "Login successfully",

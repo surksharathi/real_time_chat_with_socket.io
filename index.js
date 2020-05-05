@@ -11,7 +11,7 @@ const mongoose=require('mongoose');
 const flash=require('connect-flash');
 const passport = require('passport');
 
-container.resolve(function(users,_){
+container.resolve(function(users,_,admin,home){
     try{
     mongoose.Promise=global.Promise;
     mongoose.connect("mongodb://localhost:27017/chatapplication", { useNewUrlParser: true,useUnifiedTopology: true });
@@ -25,17 +25,20 @@ container.resolve(function(users,_){
     function SetUpExpress(){
         const app= express();
         const server= http.createServer(app);
-        server.listen(3000,function(){
-            console.log("Listening port 3000");
+        server.listen(4000,function(){
+            console.log("Listening port 4000");
         });
         ConfigureExpress(app);
          // set up Router
      const router= require('express-promise-router')();
     users.SetRouting(router);
+    admin.SetRouting(router);
+    home.SetRouting(router);
     app.use(router);
     }
     function ConfigureExpress(app){
       require('./passport/passport-local');
+      require('./passport/passport-facebook');
 
         app.use(express.static('public'));
         app.use(cookeParser());

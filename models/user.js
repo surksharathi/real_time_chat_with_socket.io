@@ -9,10 +9,12 @@ const userSchema= mongoose.Schema({
     password:{type:String,default:""},
     userImage:{type:String,default:"default.png"},
     facebook:{type:String,default:""},
-    fbToken:Array,
+    fbTokens:Array,
+
     google:{type:String,default:''},
     googleToken:Array
 });
+
 
 userSchema.methods.encryptPassword= function(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10),null);

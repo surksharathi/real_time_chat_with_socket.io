@@ -11,7 +11,7 @@ const mongoose=require('mongoose');
 const flash=require('connect-flash');
 const passport = require('passport');
 
-container.resolve(function(users,_,admin,home){
+container.resolve(function(users,_,admin,home,group){
     try{
     mongoose.Promise=global.Promise;
     mongoose.connect("mongodb://localhost:27017/chatapplication", { useNewUrlParser: true,useUnifiedTopology: true });
@@ -34,6 +34,7 @@ container.resolve(function(users,_,admin,home){
     users.SetRouting(router);
     admin.SetRouting(router);
     home.SetRouting(router);
+    group.SetRouting(router);
     app.use(router);
     }
     function ConfigureExpress(app){

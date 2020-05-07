@@ -11,6 +11,7 @@ const mongoose=require('mongoose');
 const flash=require('connect-flash');
 const passport = require('passport');
 const SocketIO= require('socket.io');
+const {Users}= require('./helpers/usersClass');
 
 container.resolve(function(users,_,admin,home,group){
     try{
@@ -31,7 +32,7 @@ container.resolve(function(users,_,admin,home,group){
             console.log("Listening port 3000");
         });
         ConfigureExpress(app);
-        require('./socket/groupchat')(io);
+        require('./socket/groupchat')(io,Users);
          // set up Router
      const router= require('express-promise-router')();
     users.SetRouting(router);

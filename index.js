@@ -10,6 +10,7 @@ const MongoStore= require('connect-mongo')(session);
 const mongoose=require('mongoose');
 const flash=require('connect-flash');
 const passport = require('passport');
+const SocketIO= require('socket.io');
 
 container.resolve(function(users,_,admin,home,group){
     try{
@@ -25,10 +26,12 @@ container.resolve(function(users,_,admin,home,group){
     function SetUpExpress(){
         const app= express();
         const server= http.createServer(app);
-        server.listen(4000,function(){
-            console.log("Listening port 4000");
+        const io= SocketIO(server);
+        server.listen(3000,function(){
+            console.log("Listening port 3000");
         });
         ConfigureExpress(app);
+        require('./socket/groupchat')(io);
          // set up Router
      const router= require('express-promise-router')();
     users.SetRouting(router);

@@ -39,7 +39,7 @@ passport.use(
 				newUser.fullname = req.body.username;
 				newUser.email = req.body.email;
 				newUser.password = newUser.encryptPassword(req.body.password);
-
+           console.log(newUser);
 				const user = await newUser.save();
 
 				done(null, user);

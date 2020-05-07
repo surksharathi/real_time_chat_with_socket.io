@@ -7,7 +7,8 @@ module.exports= function(){
       },
       groupPage:function(req,res){
           const name= req.params.name;
-          res.render('groupchat/group',{title:"Chat Application - Group", name:name})
+          console.log(req.user);
+          res.render('groupchat/group',{title:"Chat Application - Group", groupName:name, user:req.user})
       }
     }
 }

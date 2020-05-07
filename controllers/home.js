@@ -26,7 +26,7 @@ module.exports=function(async,Club,_,){
 			],(err,results)=>{
 				const res1=results[0];
 				const res2=results[1];
-				console.log(res2);
+				//console.log(res2);
 				const dataChunk=[];
 				const chunkSize=3;
 				for(let i=0; i<res1.length;i+=chunkSize){

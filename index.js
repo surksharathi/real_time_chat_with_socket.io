@@ -12,9 +12,11 @@ const flash=require('connect-flash');
 const passport = require('passport');
 const SocketIO= require('socket.io');
 const {Users}= require('./helpers/usersClass');
+const dotenv = require('dotenv');
 
 container.resolve(function(users,_,admin,home,group){
     try{
+   
     mongoose.Promise=global.Promise;
     mongoose.connect("mongodb://localhost:27017/chatapplication", { useNewUrlParser: true,useUnifiedTopology: true });
     mongoose.set('useCreateIndex', true);
@@ -27,6 +29,7 @@ container.resolve(function(users,_,admin,home,group){
     function SetUpExpress(){
         const app= express();
         const server= http.createServer(app);
+        dotenv.config();
         const io= SocketIO(server);
         server.listen(3000,function(){
             console.log("Listening port 3000");
